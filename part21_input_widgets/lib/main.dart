@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:part21_input_widgets/diger_form_elemanlari.dart';
 import 'package:part21_input_widgets/global_key_using.dart';
 import 'package:part21_input_widgets/text_field_kullanimi.dart';
 import 'package:part21_input_widgets/text_form_field.dart';
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
         colorScheme: .fromSeed(seedColor: Colors.deepPurple),
 
       ),
-      home: GlobalKeyUsing(),
+      home: DigerFormElemanlari(),
     );
   }
 }
