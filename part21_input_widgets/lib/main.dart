@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:part21_input_widgets/text_form_field_kullanimi.dart';
+import 'package:part21_input_widgets/text_field_kullanimi.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
         colorScheme: .fromSeed(seedColor: Colors.deepPurple),
 
       ),
-      home: TextFormFieldKullanimi(),
+      home: TextFieldKullanimi(),
     );
   }
 }
