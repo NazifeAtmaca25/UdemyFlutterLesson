@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:part21_input_widgets/date_and_time.dart';
 import 'package:part21_input_widgets/diger_form_elemanlari.dart';
 import 'package:part21_input_widgets/global_key_using.dart';
+import 'package:part21_input_widgets/stepper_example.dart';
 import 'package:part21_input_widgets/text_field_kullanimi.dart';
 import 'package:part21_input_widgets/text_form_field.dart';
 
@@ -19,10 +20,10 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        colorScheme: .fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: .fromSeed(seedColor: Colors.deepOrange),
 
       ),
-      home: DateAndTime(),
+      home: StepperExample(),
     );
   }
 }
