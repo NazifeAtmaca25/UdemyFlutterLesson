@@ -3,6 +3,7 @@ import 'package:part23_tasarim_yapilari/page/anasayfa.dart';
 import 'package:part23_tasarim_yapilari/page/arama.dart';
 import 'package:part23_tasarim_yapilari/page/custom_font_using.dart';
 import 'package:part23_tasarim_yapilari/page/drawer_inkwell_using.dart';
+import 'package:part23_tasarim_yapilari/page/page_view_example.dart';
 
 void main() {
   runApp(const MyApp());
@@ -38,16 +39,20 @@ class _MyHomePageState extends State<MyHomePage> {
   late List<Widget> sayfalar;
   late Anasayfa anasayfa;
   late Arama arama;
+  late PageViewExample pageViewExample;
 
   var keyAnasayfa=PageStorageKey('key_ana_sayfa');
-  var keyArama=PageStorageKey('key_ana_Sayfa');
+  var keyArama=PageStorageKey('key_ana_sayfa');
+  var keyPage=PageStorageKey('key_ana_sayfa');
 
   @override
   void initState() {
     super.initState();
     anasayfa=Anasayfa(key: keyAnasayfa,);
     arama=Arama(key: keyArama,);
-    sayfalar=[anasayfa,arama];
+    pageViewExample=PageViewExample(key: keyPage,);
+    sayfalar=[anasayfa,arama,pageViewExample];
+
   }
   @override
   Widget build(BuildContext context) {
