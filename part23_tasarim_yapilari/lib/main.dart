@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:part23_tasarim_yapilari/custom_font_using.dart';
-import 'package:part23_tasarim_yapilari/drawer_inkwell_using.dart';
+import 'package:part23_tasarim_yapilari/page/anasayfa.dart';
+import 'package:part23_tasarim_yapilari/page/arama.dart';
+import 'package:part23_tasarim_yapilari/page/custom_font_using.dart';
+import 'package:part23_tasarim_yapilari/page/drawer_inkwell_using.dart';
 
 void main() {
   runApp(const MyApp());
@@ -32,6 +34,21 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  int secilenSayfa=0;
+  late List<Widget> sayfalar;
+  late Anasayfa anasayfa;
+  late Arama arama;
+
+  var keyAnasayfa=PageStorageKey('key_ana_sayfa');
+  var keyArama=PageStorageKey('key_ana_Sayfa');
+
+  @override
+  void initState() {
+    super.initState();
+    anasayfa=Anasayfa(key: keyAnasayfa,);
+    arama=Arama(key: keyArama,);
+    sayfalar=[anasayfa,arama];
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,8 +56,39 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text("Drawer Kullanımı"),
       ),
       drawer: DrawerInkwellUsing(),
-      body: Center(
-        child: Text("Body"),
+      body: secilenSayfa<=sayfalar.length-1 ? sayfalar[secilenSayfa]:sayfalar[0],
+      bottomNavigationBar: Theme(
+
+        data: ThemeData(
+          canvasColor: Colors.cyan.shade100,
+          primaryColor: Colors.orangeAccent
+        ),
+        child: BottomNavigationBar(items: [
+          BottomNavigationBarItem(icon: Icon(Icons.home),
+          label: "ExpansionTile",
+          backgroundColor: Colors.amber
+          ),
+          BottomNavigationBarItem(icon: Icon(Icons.search),
+              activeIcon: Icon(Icons.call),
+              label: "Liste",
+              backgroundColor: Colors.red
+          ),
+          BottomNavigationBarItem(icon: Icon(Icons.add),
+              label: "PageView",
+              backgroundColor: Colors.teal
+          ),
+          BottomNavigationBarItem(icon: Icon(Icons.account_box),
+              label: "Profile",
+              backgroundColor: Colors.brown
+          ),
+        ],
+        type: BottomNavigationBarType.shifting,
+        currentIndex: secilenSayfa,
+        onTap: (index){
+          setState(() {
+            secilenSayfa=index;
+          });
+        },),
       ),
     );
   }
