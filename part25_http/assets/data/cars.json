@@ -1,0 +1,36 @@
+[
+  {
+    "car_name": "Mercedes",
+    "country": "Almanya",
+    "establishment_year": 1920,
+    "model": [
+      {
+        "model_name": "a serisi",
+        "price": 12000,
+        "gasoline": true
+      },
+      {
+        "model_name": "b serisi",
+        "price": 15000,
+        "gasoline": false
+      }
+    ]
+  },
+  {
+    "car_name": "Honda",
+    "country": "Japonya",
+    "establishment_year": 1960,
+    "model": [
+      {
+        "model_name": "civic",
+        "price": 12500,
+        "gasoline": true
+      },
+      {
+        "model_name": "jazz",
+        "price": 25000,
+        "gasoline": false
+      }
+    ]
+  }
+]
