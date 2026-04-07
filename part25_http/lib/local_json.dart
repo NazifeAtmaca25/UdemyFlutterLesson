@@ -12,13 +12,27 @@ class LocalJson extends StatefulWidget {
 }
 
 class _LocalJsonState extends State<LocalJson> {
+
+  String _title="Local Json Kullanımı";
+  late final Future<List<Car>> _listeyiDoldur;
+
+  @override
+  void initState() {
+    super.initState();
+    _listeyiDoldur=carJsonOku();
+  }
   @override
   Widget build(BuildContext context) {
-    carJsonOku();
     return Scaffold(
-      appBar: AppBar(title: Text("Local Json Kullanımı")),
+      appBar: AppBar(title: Text(_title)),
+      floatingActionButton: FloatingActionButton(onPressed: (){
+        setState(() {
+          _title="Buton tıklandı";
+        });
+      }),
       body: FutureBuilder(
-        future: carJsonOku(),
+        future: _listeyiDoldur,
+        initialData: [Car(carName: "Volvo", country: "İngiltere", establishmentYear: 2010, model: [Model(modelName: "d serisi", price: 30000, gasoline: true)])],
         builder: (context, snapchot) {
           if (snapchot.hasData) {
             List<Car> arabalar =
@@ -48,7 +62,10 @@ class _LocalJsonState extends State<LocalJson> {
 
   Future<List<Car>> carJsonOku() async {
     try {
-      Future.delayed(Duration(seconds: 10));
+      debugPrint('5 saniyelik işlem başlıyor');
+      Future.delayed(Duration(seconds: 10),(){
+        debugPrint('5 saniyelik işlem bitti');
+      });
       String okunanString = await DefaultAssetBundle.of(
         context,
       ).loadString("assets/data/cars.json");
