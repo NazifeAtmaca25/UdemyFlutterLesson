@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:part25_http/local_json.dart';
+import 'package:part25_http/remote_api.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: .fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: LocalJson(),
+      home: RemoteApi(),
     );
   }
 }

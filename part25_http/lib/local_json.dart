@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 
-import 'car.dart';
+import 'model/car.dart';
 
 class LocalJson extends StatefulWidget {
   const LocalJson({super.key});
