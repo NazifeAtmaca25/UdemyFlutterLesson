@@ -1,6 +1,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:part27_hive_depolama/model/my_model.dart';
+import 'package:part27_hive_depolama/services/secure_storage_services.dart';
+import 'package:part27_hive_depolama/services/shared_pref_services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SharedPrefUsing extends StatefulWidget {
@@ -15,11 +17,12 @@ class _SharedPrefUsingState extends State<SharedPrefUsing> {
   var _secilenRenkler = <String>[];
   var _ogrenciMi = false;
   final TextEditingController _nameController = TextEditingController();
+  final _preferenceService=SecureStorageServices();
 
   @override
   void initState() {
     super.initState();
-    verileriGetir();
+    verileriOku();
   }
 
   @override
@@ -61,28 +64,23 @@ class _SharedPrefUsingState extends State<SharedPrefUsing> {
               });
             },
           ),
-          TextButton(onPressed: _verileriKaydet, child: Text("Kaydet")),
+          TextButton(onPressed: (){
+            UserInformation information=UserInformation(_nameController.text, _secilenCinsiyet, _secilenRenkler, _ogrenciMi);
+            _preferenceService.verileriKaydet(information);
+          }, child: Text("Kaydet")),
         ],
       ),
     );
   }
-  void _verileriKaydet() async{
-    final name=_nameController.text;
-    final prefences= await SharedPreferences.getInstance();
-    
-    prefences.setString("isim", name);
-    prefences.setBool("ogrenci", _ogrenciMi);
-    prefences.setInt("cinsiyet", _secilenCinsiyet.index);
-    prefences.setStringList("renkler", _secilenRenkler);
-    debugPrint("cinsiyet:${_secilenCinsiyet.index} renkler:$_secilenRenkler öğrenci:$_ogrenciMi");
-  }
+  void verileriOku() async{
+    var info= await _preferenceService.verileriGetir();
+    _nameController.text=info.isim;
+    _secilenCinsiyet=info.cinsiyet;
+    _secilenRenkler=info.renkler;
+    _ogrenciMi=info.ogrenciMi;
+    setState(() {
 
-  void verileriGetir() async{
-    final preferences=await SharedPreferences.getInstance();
-    _nameController.text=preferences.getString("isim") ?? "";
-    _ogrenciMi=preferences.getBool("ogrenci") ?? false;
-    _secilenCinsiyet=Cinsiyet.values[preferences.getInt("cinsiyet") ?? 0];
-    _secilenRenkler=preferences.getStringList("renkler") ?? <String>[];
+    });
   }
 
   CheckboxListTile buildCheckboxListTile(Renkler renk) {
