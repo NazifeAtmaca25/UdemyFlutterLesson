@@ -2,11 +2,13 @@ import 'dart:convert';
 
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:part27_hive_depolama/model/my_model.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:part27_hive_depolama/services/local_storage_services.dart';
 
-class SecureStorageServices {
+class SecureStorageServices implements LocalStorageServices{
   late final FlutterSecureStorage preferences;
-  void verileriKaydet(UserInformation information) async{
+
+  @override
+  Future<void> verileriKaydet(UserInformation information) async{
     final name=information.isim;
     await preferences.write(key: "isim", value: name);
     await preferences.write(key: "ogrenci", value: information.ogrenciMi.toString());
@@ -14,6 +16,7 @@ class SecureStorageServices {
     await preferences.write(key: "renkler", value: jsonEncode(information.renkler));
   }
 
+  @override
   Future<UserInformation> verileriGetir() async{
     preferences=FlutterSecureStorage();
     var _isim=await preferences.read(key: "isim") ?? "";

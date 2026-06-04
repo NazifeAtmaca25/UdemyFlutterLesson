@@ -1,9 +1,12 @@
 import 'package:part27_hive_depolama/model/my_model.dart';
+import 'package:part27_hive_depolama/services/local_storage_services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class SharedPrefServices {
+class SharedPrefServices implements LocalStorageServices{
   late final preferences;
-  void verileriKaydet(UserInformation information) async{
+
+  @override
+  Future<void> verileriKaydet(UserInformation information) async{
     final name=information.isim;
     final prefences= await SharedPreferences.getInstance();
 
@@ -13,6 +16,7 @@ class SharedPrefServices {
     prefences.setStringList("renkler", information.renkler);
   }
 
+  @override
   Future<UserInformation> verileriGetir() async{
     preferences=await SharedPreferences.getInstance();
     var _isim=preferences.getString("isim") ?? "";
