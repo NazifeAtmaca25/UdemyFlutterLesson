@@ -1,7 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
+import 'package:part27_hive_depolama/services/file_storage.dart';
+import 'package:part27_hive_depolama/services/local_storage_services.dart';
+import 'package:part27_hive_depolama/services/secure_storage_services.dart';
+import 'package:part27_hive_depolama/services/shared_pref_services.dart';
 import 'package:part27_hive_depolama/shared_pref_using.dart';
 
+final locator = GetIt.instance;
+
+void setUp() {
+  locator.registerSingleton<LocalStorageServices>(FileStorage());
+  //registerSingleton: bir nesneyi bir kere üretiyor ve ondan sonra kullanılacağı zaman bir daha bir daha
+  //contructorı çalıştırılmıyor aynı nesne üzerinden üretiliyor.
+
+  locator.registerLazySingleton<LocalStorageServices>(
+    () => SecureStorageServices(),
+  );
+  //uygulama başlar başlamaz üretmede ihtiyat duyulduğunda
+}
+
 void main() {
+  setUp();
   runApp(const MyApp());
 }
 

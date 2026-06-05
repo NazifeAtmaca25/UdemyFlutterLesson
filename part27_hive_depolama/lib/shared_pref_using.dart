@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:part27_hive_depolama/main.dart';
 import 'package:part27_hive_depolama/model/my_model.dart';
 import 'package:part27_hive_depolama/services/file_storage.dart';
 import 'package:part27_hive_depolama/services/local_storage_services.dart';
@@ -19,7 +20,7 @@ class _SharedPrefUsingState extends State<SharedPrefUsing> {
   var _secilenRenkler = <String>[];
   var _ogrenciMi = false;
   final TextEditingController _nameController = TextEditingController();
-  final LocalStorageServices _preferenceService=FileStorage();
+  final LocalStorageServices _preferenceService=locator<LocalStorageServices>();
 
   @override
   void initState() {

@@ -5,20 +5,25 @@ import 'package:shared_preferences/shared_preferences.dart';
 class SharedPrefServices implements LocalStorageServices{
   late final preferences;
 
+  SharedPrefServices(){
+    init();
+  }
+
+  Future<void> init() async{
+    preferences=await SharedPreferences.getInstance();
+  }
+
   @override
   Future<void> verileriKaydet(UserInformation information) async{
     final name=information.isim;
-    final prefences= await SharedPreferences.getInstance();
-
-    prefences.setString("isim", name);
-    prefences.setBool("ogrenci", information.ogrenciMi);
-    prefences.setInt("cinsiyet", information.cinsiyet.index);
-    prefences.setStringList("renkler", information.renkler);
+    preferences.setString("isim", name);
+    preferences.setBool("ogrenci", information.ogrenciMi);
+    preferences.setInt("cinsiyet", information.cinsiyet.index);
+    preferences.setStringList("renkler", information.renkler);
   }
 
   @override
   Future<UserInformation> verileriGetir() async{
-    preferences=await SharedPreferences.getInstance();
     var _isim=preferences.getString("isim") ?? "";
     var _ogrenciMi=preferences.getBool("ogrenci") ?? false;
     var _cinsiyet=Cinsiyet.values[preferences.getInt("cinsiyet") ?? 0];
