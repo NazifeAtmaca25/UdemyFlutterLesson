@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "1096685931641",
+    "project_id": "part30-firebase",
+    "storage_bucket": "part30-firebase.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1096685931641:android:db490a7f3523bbf70b58a8",
+        "android_client_info": {
+          "package_name": "com.nazifeatmaca.part30_firebase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1096685931641-bdh4uke2scmflf2s1iba9g3oh34h227j.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.nazifeatmaca.part30_firebase",
+            "certificate_hash": "10b61188ab69c9151dccb38cd24ae855bbb90694"
+          }
+        },
+        {
+          "client_id": "1096685931641-fc93en4e69rkjnhbbabm8esilo1n4bt8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBcBu_rsTZQyvQHgsa2CLAe9NjRxAx0qb8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1096685931641-fc93en4e69rkjnhbbabm8esilo1n4bt8.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1096685931641-npp5bpk699og3r2jcusuel16jg37oa1h.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.nazifeatmaca.part30Firebase"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
