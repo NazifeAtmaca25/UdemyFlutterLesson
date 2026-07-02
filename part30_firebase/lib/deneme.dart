@@ -133,6 +133,7 @@ class _HomePageState extends State<HomePage> {
     }catch(e){
       debugPrint("Hata: $e");
     }
+    return null;
   }
 
   void loginWithPhoneNumber() async{
@@ -157,4 +158,6 @@ class _HomePageState extends State<HomePage> {
       },
     );
   }
+
+
 }
