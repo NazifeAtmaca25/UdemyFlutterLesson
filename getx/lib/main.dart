@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:getx/screens/detail_page.dart';
 import 'package:getx/screens/favorite_page.dart';
 import 'package:getx/screens/homepage.dart';
 
@@ -16,14 +15,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: .fromSeed(seedColor: Colors.deepPurple),
-      ),
+      theme: ThemeData(colorScheme: .fromSeed(seedColor: Colors.deepPurple)),
       initialRoute: '/',
       getPages: [
-        GetPage(name: "/", page: ()=>HomePage()),
-        GetPage(name: "/favorite", page: ()=>FavoritePage()),
-        GetPage(name: "/detail", page: ()=>DetailPage())
+        GetPage(name: "/", page: () => HomePage()),
+        //GetPage(name: "/favorite", page: ()=>FavoritePage()),
+        //GetPage(name: "/detail", page: ()=>DetailPage())
       ],
     );
   }

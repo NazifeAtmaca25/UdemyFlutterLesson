@@ -2,30 +2,41 @@ import 'package:get/get.dart';
 import 'package:getx/data/product_data.dart';
 import 'package:getx/model/product.dart';
 
-class ProductController extends GetxController{
-   final ProductData data;
-   ProductController({required this.data});
+class ProductController extends GetxController {
+  final ProductData data;
 
-   var productList=<Product>[].obs();
+  ProductController({required this.data});
 
-   @override
+  var currentProduct = Rxn<Product>();
+  var productList = <Product>[].obs();
+
+  @override
   void onInit() {
     super.onInit();
+    print("onInit çalıştı");
     getProduct();
   }
 
-   void getProduct(){
-     productList=data.getData();
-   }
+  @override
+  // TODO: implement onStart
+  InternalFinalCallback<void> get onStart => super.onStart;
 
-   void toggleFavorite(Product product){
-     print(product.isFavorite.value);
-     print("--------------------");
-     product.isFavorite.value = !product.isFavorite.value;
-     print(product.isFavorite.value);
-   }
+  @override
+  void onReady() {
+    // TODO: implement onReady
+    super.onReady();
+    print("onReady çalıştı");
+  }
 
-   int favoriteItemsCount(){
-     return productList.where((e)=>e.isFavorite.value==true).toList().length;
-   }
+  @override
+  void onClose() {
+    // TODO: implement
+    print("cloedayım");
+    super.onClose();
+    print("close çalıştı");
+  }
+
+  void getProduct() {
+    productList = data.getData();
+  }
 }
