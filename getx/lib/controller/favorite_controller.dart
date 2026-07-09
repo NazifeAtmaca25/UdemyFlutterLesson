@@ -1,7 +1,9 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getx/model/product.dart';
 
 class FavoriteController extends GetxController {
+  late TextEditingController searchController;
   // var favoriteList=<Product>[].obs();
 
   var favoriteList = RxList<Product>();
@@ -11,11 +13,15 @@ class FavoriteController extends GetxController {
   void onInit() {
     super.onInit();
     print("onInit çalıştı favorite");
+    searchController = TextEditingController();
+    print("texteditingcontroller çalıştı çalıştı favorite");
   }
 
   @override
   void onClose() {
     print("onClose çalıştı favoriteda");
+    searchController.dispose();
+    print("texteditingcontroller kapatıldı favorite");
     super.onClose();
   }
 

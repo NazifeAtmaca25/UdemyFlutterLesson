@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:getx/route/page_route.dart';
 import 'package:getx/screens/favorite_page.dart';
 import 'package:getx/screens/homepage.dart';
 
@@ -17,11 +18,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData(colorScheme: .fromSeed(seedColor: Colors.deepPurple)),
       initialRoute: '/',
-      getPages: [
-        GetPage(name: "/", page: () => HomePage()),
-        //GetPage(name: "/favorite", page: ()=>FavoritePage()),
-        //GetPage(name: "/detail", page: ()=>DetailPage())
-      ],
+      getPages: RoutePage.routes,
     );
   }
 }

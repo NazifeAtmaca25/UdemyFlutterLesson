@@ -7,7 +7,7 @@ class ProductController extends GetxController {
 
   ProductController({required this.data});
 
-  var currentProduct = Rxn<Product>();
+  var currentProduct = Rxn<Product>(); //Rxn null olabilir demek.
   var productList = <Product>[].obs();
 
   @override

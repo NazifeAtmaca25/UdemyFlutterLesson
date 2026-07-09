@@ -25,9 +25,7 @@ class HomePage extends StatelessWidget {
             GestureDetector(
               onTap: () {
                 print("aaaaaaa");
-                Get.to(
-                  () => FavoritePage(favoriController: favoriteController),
-                );
+                Get.toNamed("/favorite");
                 print("aaaaaaa bitti");
               },
               child: CircleAvatar(
@@ -58,9 +56,7 @@ class HomePage extends StatelessWidget {
       onTap: () {
         print(urun);
         productContoller.currentProduct.value = urun;
-        Get.to(
-          () => DetailPage(controller: productContoller),
-        ); //()=> kullanmak önemli
+        Get.toNamed("/detail"); //()=> kullanmak önemli
         //Get.toNamed("/detail", arguments: urun);
       },
       child: ListTile(

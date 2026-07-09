@@ -23,7 +23,12 @@ class DetailPage extends StatelessWidget {
             Text("Name: ${product.value?.name}"),
             Text("Price: ${product.value?.price}"),
             Text("Favori mi: ${product.value?.isFavorite}"),
-            ElevatedButton(onPressed: () {}, child: Text("Geri dön")),
+            ElevatedButton(
+              onPressed: () {
+                Get.offNamed("/favorite");
+              },
+              child: Text("Geri dön"),
+            ),
           ],
         ),
       ),
